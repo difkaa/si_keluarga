@@ -14,7 +14,10 @@ class AnggotaKeluargaController extends Controller
      */
     public function index()
     {
-        //
+        $anggotaKeluargas = AnggotaKeluarga::paginate(10);
+        return view('anggotakeluarga.index',[
+            'anggotaKeluargas' => $anggotaKeluargas
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class AnggotaKeluargaController extends Controller
      */
     public function create()
     {
-        //
+        return view('anggotakeluarga.create');
     }
 
     /**
@@ -35,7 +38,25 @@ class AnggotaKeluargaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nik' => 'required|unique:anggota_keluargas',
+            'nama' => 'required',
+            'hub_keluarga' => 'required',
+            'tgl_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+        ]);
+
+
+        $data = AnggotaKeluarga::create([
+            'id_keluarga' => null,
+            'nik' => $request->nik,
+            'nama' => $request->nama,
+            'hub_keluarga' => $request->hub_keluarga,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jenis_kelamin' => 1
+        ]);
+        return redirect()->route('rumahtangga.index')->with('success', 'Data Anggota Keluarga Berhasil Ditambahkan');
+
     }
 
     /**

@@ -16,7 +16,7 @@ class Keluarga extends Migration
         Schema::create('keluargas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('id_rt')->constrained('rumah_tanggas');
-            $table->string('nama',100);
+            $table->string('nm_kepala_rt',100);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class Keluarga extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keluarga');
+        Schema::dropIfExists('keluargas');
     }
 }

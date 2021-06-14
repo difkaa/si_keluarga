@@ -15,7 +15,7 @@ class AnggotaKeluarga extends Migration
     {
         Schema::create('anggota_keluargas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('id_keluarga')->constrained('keluargas');
+            $table->foreignId('id_keluarga')->constrained('keluargas')->nullable();
             $table->string('nik',30)->unique();
             $table->string('nama',100);
             $table->string('hub_keluarga',50);
@@ -32,6 +32,6 @@ class AnggotaKeluarga extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anggota_keluarga');
+        Schema::dropIfExists('anggota_keluargas');
     }
 }

@@ -14,7 +14,11 @@ class RumahTanggaController extends Controller
      */
     public function index()
     {
-        //
+        $rumahTanggas = RumahTangga::paginate(10);
+
+        return view('rumahtangga.index',[
+            'rumahTanggas' => $rumahTanggas
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class RumahTanggaController extends Controller
      */
     public function create()
     {
-        //
+        return view('rumahtangga.create');
     }
 
     /**
@@ -35,7 +39,25 @@ class RumahTanggaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'provinsi' => 'required',
+            'kabupaten' => 'required',
+            'kecamatan' => 'required',
+            'desa' => 'required',
+            'alamat' => 'required',
+        ]);
+
+
+        $data = RumahTangga::create([
+            'provinsi' => $request->provinsi,
+            'kabupaten' => $request->kabupaten,
+            'kecamatan' => $request->kecamatan,
+            'desa' => $request->desa,
+            'alamat' => $request->alamat,
+            'nm_kepala_rt' => 1
+        ]);
+
+        return redirect()->route('rumahtangga.index')->with('success', 'Data Rumah Tangga Berhasil Ditambahkan');
     }
 
     /**
@@ -57,7 +79,9 @@ class RumahTanggaController extends Controller
      */
     public function edit(RumahTangga $rumahTangga)
     {
-        //
+        // print_r($rumahTangga);exit;
+        return view('rumahtangga.edit',[
+            'rumahtangga' => $rumahTangga]);
     }
 
     /**
@@ -69,7 +93,16 @@ class RumahTanggaController extends Controller
      */
     public function update(Request $request, RumahTangga $rumahTangga)
     {
-        //
+        $rumahTangga->update([
+            'provinsi' => $request->provinsi,
+            'kabupaten' => $request->kabupaten,
+            'kecamatan' => $request->kecamatan,
+            'desa' => $request->desa,
+            'alamat' => $request->alamat,
+            // 'nm_kepala_rt' => 1
+        ]);
+
+        return redirect()->route('rumahtangga.index')->with('success', 'Data Rumah Tangga Berhasil Diperbaharui');
     }
 
     /**
@@ -80,6 +113,9 @@ class RumahTanggaController extends Controller
      */
     public function destroy(RumahTangga $rumahTangga)
     {
+        $rumahTangga->delete();
+        return back()->with('danger', 'rumah tangga telah dihapus ');
+
         //
     }
 }

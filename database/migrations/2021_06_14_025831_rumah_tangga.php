@@ -32,6 +32,6 @@ class RumahTangga extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rumah_tangga');
+        Schema::dropIfExists('rumah_tanggas');
     }
 }

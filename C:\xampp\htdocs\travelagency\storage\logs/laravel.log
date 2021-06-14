@@ -1,0 +1,42 @@
+[2021-06-14 06:46:39] local.ERROR: Uncaught InvalidArgumentException: The "C:\xampp\htdocs\travelagency\resources\views" directory does not exist. in /home/difka/Documents/projek/travelagency/vendor/symfony/finder/Finder.php:547
+Stack trace:
+#0 /home/difka/Documents/projek/travelagency/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(390): Symfony\Component\Finder\Finder->in()
+#1 Command line code(1): Illuminate\Filesystem\Filesystem->files()
+#2 Command line code(1): getViews()
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught InvalidArgumentException: The \"C:\\xampp\\htdocs\\travelagency\esources\\views\" directory does not exist. in /home/difka/Documents/projek/travelagency/vendor/symfony/finder/Finder.php:547
+Stack trace:
+#0 /home/difka/Documents/projek/travelagency/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(390): Symfony\\Component\\Finder\\Finder->in()
+#1 Command line code(1): Illuminate\\Filesystem\\Filesystem->files()
+#2 Command line code(1): getViews()
+#3 {main}
+  thrown at /home/difka/Documents/projek/travelagency/vendor/symfony/finder/Finder.php:547)
+[stacktrace]
+#0 {main}
+"} 
+[2021-06-14 06:46:57] local.ERROR: Uncaught Error: Call to undefined method App\Http\Kernel::getMiddlewareGroups() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught Error: Call to undefined method App\\Http\\Kernel::getMiddlewareGroups() in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+[2021-06-14 06:46:57] local.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct()
+#1 [internal function]: {closure}()
+#2 Command line code(1): array_map()
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct()
+#1 [internal function]: {closure}()
+#2 Command line code(1): array_map()
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
