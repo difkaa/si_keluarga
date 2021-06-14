@@ -46,16 +46,15 @@ class AnggotaKeluargaController extends Controller
             'jenis_kelamin' => 'required',
         ]);
 
-
         $data = AnggotaKeluarga::create([
             'id_keluarga' => null,
             'nik' => $request->nik,
             'nama' => $request->nama,
             'hub_keluarga' => $request->hub_keluarga,
             'tgl_lahir' => $request->tgl_lahir,
-            'jenis_kelamin' => 1
+            'jenis_kelamin' => $request->jenis_kelamin
         ]);
-        return redirect()->route('rumahtangga.index')->with('success', 'Data Anggota Keluarga Berhasil Ditambahkan');
+        return redirect()->route('anggotakeluarga.index')->with('success', 'Data Anggota Keluarga Berhasil Ditambahkan');
 
     }
 
@@ -78,7 +77,8 @@ class AnggotaKeluargaController extends Controller
      */
     public function edit(AnggotaKeluarga $anggotaKeluarga)
     {
-        //
+        return view('anggotakeluarga.edit',[
+            'anggotakeluarga' => $anggotaKeluarga]);
     }
 
     /**
@@ -90,7 +90,16 @@ class AnggotaKeluargaController extends Controller
      */
     public function update(Request $request, AnggotaKeluarga $anggotaKeluarga)
     {
-        //
+        $anggotaKeluarga->update([
+            'id_keluarga' => $request->id_keluarga,
+            'nik' => $request->nik,
+            'nama' => $request->nama,
+            'hub_keluarga' => $request->hub_keluarga,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin
+        ]);
+
+        return redirect()->route('anggotakeluarga.index')->with('success', 'Data Rumah Tangga Berhasil Diperbaharui');
     }
 
     /**
@@ -101,6 +110,7 @@ class AnggotaKeluargaController extends Controller
      */
     public function destroy(AnggotaKeluarga $anggotaKeluarga)
     {
-        //
+        $anggotaKeluarga->delete();
+        return back()->with('danger', 'rumah tangga telah dihapus ');
     }
 }

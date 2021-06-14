@@ -8,82 +8,71 @@
             <form action="{{Route('anggotakeluarga.store')}}" class="form-horizontal" method="POST">
                 @csrf
             <div class="box-body">
-                <div class="form-group {{ $errors->has('provinsi') ? 'has-error' :'' }}">
-                    <label for="" class="col-sm-2 control-label">Provinsi</label>
+                <div class="form-group {{ $errors->has('nik') ? 'has-error' :'' }}">
+                    <label for="" class="col-sm-2 control-label">NIK</label>
                     <div class="col-sm-10">
-                    <select name="provinsi">
-                        <option value="0">Pilih Provinsi</option>
-                        <option value="jawa-tengah" {{$anggotakeluarga->provinsi == 'jawa-tengah' ? 'selected' :null }}>Jawa Tengah</option>
-                        <option value="jawa-timur" {{$anggotakeluarga->provinsi == 'jawa-timur' ? 'selected' :null }}>Jawa Timur</option>
-                        <option value="jawa-barat" {{$anggotakeluarga->provinsi == 'jawa-barat' ? 'selected' :null }}>Jawa Barat </option>
-                    </select>
-                    @if ($errors->has('provinsi'))
+                    <input name="nik" class="form-control" placeholder=" Nomor Induk Kependudukan (NIK) " value="{{$anggotakeluarga->nik}}">{{old('nik')}}
+                    @if ($errors->has('nik'))
                         <p class="help-block">
-                            {{ $errors->first('provinsi') }}
+                            {{ $errors->first('nik') }}
                         </p>
                     @endif
                     </div>
                 </div>
 
-                <div class="form-group {{ $errors->has('kabupaten') ? 'has-error' :'' }}">
-                    <label for="" class="col-sm-2 control-label">Kabupaten</label>
+                <div class="form-group {{ $errors->has('nama') ? 'has-error' :'' }}">
+                    <label for="" class="col-sm-2 control-label">Nama</label>
                     <div class="col-sm-10">
-                    <select name="kabupaten">
-                        <option value="0">Pilih Kabupaten</option>
-                        <option value="blora" {{$anggotakeluarga->kabupaten == 'blora' ? 'selected':null}}>Blora</option>
-                        <option value="surabaya" {{$anggotakeluarga->kabupaten == 'surabaya' ? 'selected':null}}>Surabaya</option>
-                        <option value="bandung" {{$anggotakeluarga->kabupaten == 'bandung' ? 'selected':null}}>Bandung</option>
-                    </select>
-                    @if ($errors->has('kabupaten'))
+                    <input name="nama" class="form-control" placeholder="Nama Lengkap " value="{{$anggotakeluarga->nama}}">{{old('nama')}}
+                    @if ($errors->has('nama'))
                         <p class="help-block">
-                            {{ $errors->first('kabupaten') }}
+                            {{ $errors->first('nama') }}
                         </p>
                     @endif
                     </div>
                 </div>
 
-                <div class="form-group {{ $errors->has('kecamatan') ? 'has-error' :'' }}">
-                    <label for="" class="col-sm-2 control-label">Kecamatan</label>
+                <div class="form-group {{ $errors->has('hub_keluarga') ? 'has-error' :'' }}">
+                    <label for="" class="col-sm-2 control-label">Hubungan Keluarga</label>
                     <div class="col-sm-10">
-                    <select name="kecamatan">
-                        <option value="0">Pilih Kecamatan</option>
-                        <option value="blora" {{$anggotakeluarga->kecamatan == 'blora' ? 'selected':null}}>Blora</option>
-                        <option value="genteng" {{$anggotakeluarga->kecamatan == 'genteng' ? 'selected':null}}>Genteng</option>
-                        <option value="lembang" {{$anggotakeluarga->kecamatan == 'lembang' ? 'selected':null}}>Lembang</option>
+                    <select name="hub_keluarga">
+                        <option value="0">Pilih Hubungan Keluarga</option>
+                        <option value="suami">Suami</option>
+                        <option value="istri">Istri</option>
+                        <option value="anak">Anak</option>
                     </select>
-                    @if ($errors->has('kecamatan'))
+                    @if ($errors->has('hub_keluarga'))
                         <p class="help-block">
-                            {{ $errors->first('kecamatan') }}
+                            {{ $errors->first('hub_keluarga') }}
                         </p>
                     @endif
                     </div>
                 </div>
 
-                <div class="form-group {{ $errors->has('desa') ? 'has-error' :'' }}">
-                    <label for="" class="col-sm-2 control-label">Desa</label>
+                <div class="form-group {{ $errors->has('jenis_kelamin') ? 'has-error' :'' }}">
+                    <label for="" class="col-sm-2 control-label">Jenis Kelamin</label>
                     <div class="col-sm-10">
-                    <select name="desa">
-                        <option value="0">Pilih Desa</option>
-                        <option value="kedung-jenar" {{$anggotakeluarga->desa == 'kedung-jenar' ? 'selected':null}}>Kedungjenar</option>
-                        <option value="ketabang" {{$anggotakeluarga->desa == 'ketabang' ? 'selected':null}}>Ketabang</option>
-                        <option value="desa-lembang" {{$anggotakeluarga->desa == 'desa-lembang' ? 'selected':null}}>Desa Lembang</option>
+                    <select name="jenis_kelamin">
+                        <option value="0">Pilih Jenis Kelamin</option>
+                        <option value="1">Laki-Laki</option>
+                        <option value="2">Perempuan</option>
                     </select>
-                    @if ($errors->has('desa'))
+                    @if ($errors->has('jenis_kelamin'))
                         <p class="help-block">
-                            {{ $errors->first('desa') }}
+                            {{ $errors->first('jenis_kelamin') }}
                         </p>
                     @endif
                     </div>
                 </div>
 
-                <div class="form-group {{ $errors->has('alamat') ? 'has-error' :'' }}">
-                    <label for="" class="col-sm-2 control-label">Alamat lengkap</label>
+                <div class="form-group {{ $errors->has('tgl_lahir') ? 'has-error' :'' }}">
+                    <label for="" class="col-sm-2 control-label">Tanggal Lahir </label>
                     <div class="col-sm-10">
-                    <textarea name="alamat" rows="5" class="form-control" placeholder="Alamat lengkap">{{ $anggotakeluarga->alamat ?? $old('alamat') }} </textarea>
-                    @if ($errors->has('alamat'))
+                    <input name="tgl_lahir" type="date" class="form-control" placeholder="Tanggal Lahir ">{{old('tgl_lahir')}}
+                        @if ($errors->has('tgl_lahir'))
                         <p class="help-block">
-                            {{ $errors->first('alamat') }}
-                        </p>
+                            {{ $errors->first('tgl_lahir') }}
+                        </p>tgl_lahir
                     @endif
                     </div>
                 </div>
